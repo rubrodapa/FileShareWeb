@@ -27,7 +27,7 @@
         ?>
 
 
-        <form action="process_login.php" method="post" name="login_form">
+        <form action="php/processing_login.php" method="post" name="login_form">
         	<label for="email">Email: </label><input type="email" name="email" id="email"/ ><br/>
             <label for="password">Password: </label><input type="password" name="password" id="password"/><br/>
             <input type="button" value="Login" onClick="formhash(this.form, this.form.password);" />

@@ -21,7 +21,7 @@ function login($email,$password,$mysqli){
 		$stmt->bind_param('s', $email); //Add the email to the query.
 		$stmt->execute(); //Execute the prepared query.
 		$stmt->store_result();
-		$stmt->bind_results($user_id,$username,$db_password, $salt); //Get the data from the query in these variables.
+		$stmt->bind_result($user_id,$username,$db_password, $salt); //Get the data from the query in these variables.
 		$stmt->fetch();
 		$password = hash('sha512',$password.$salt); //hash the password with the unique salt.
 		
@@ -94,7 +94,7 @@ function login_check($mysqli){
 			$stmt->store_results();
 			
 			if($stmt->num_rows == 1){ //If the user exists
-				$stmt->bind_results($password);
+				$stmt->bind_result($password);
 				$stmt->fetch();
 				$login_check = hash('sha512', $password.$ip_adress.$user_browser);
 				if($login_check == $login_string){
