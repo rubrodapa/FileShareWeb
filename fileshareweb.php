@@ -2,7 +2,20 @@
 	include_once 'php/isLogin.php';
 	include_once 'php/functionsFileShare.php';
 	
-	$results = readADir('./files/');
+	$ini = "./files/";
+	if(!isset($_SESSION['route']['depth'])){
+		$_SESSION['route']['depth'] = 0;
+	}
+
+	$depth = $_SESSION['route']['depth'];
+	$i = 0;
+	
+	while($i < $depth){
+		$ini = $ini.$_SESSION['route'][$i];
+		$i++;
+	}
+	
+	$results = readADir($ini);
 	
 ?>
 
