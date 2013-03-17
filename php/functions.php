@@ -7,7 +7,7 @@ function sec_session_start(){
 	
 	ini_set('session.use_only_cookies', 1); //Force the session to use the cokies
 	$cookieParams = session_get_cookie_params(); //Get the current parameters of the cokkies.
-	session_set_cookie_params($cookieParams["lifetime"],$cookieParams["domain"],$secure,$httponly);
+	session_set_cookie_params($cookieParams["lifetime"], $cookieParams["path"], $cookieParams["domain"], $secure, $httponly);
 	session_name($session_name); //Set the session name to the one above.
 	session_start();
 	session_regenerate_id(true); //Regenerate the sesion, deleting the old one.
@@ -88,10 +88,10 @@ function login_check($mysqli){
 		$ip_adress = $_SERVER['REMOTE_ADDR'];
 		$user_browser = $_SERVER['HTTP_USER_AGENT'];
 		
-		if($stmt->prepare("SELECT password FROM members WHERE id = ? LIMIT 1")){
+		if($stmt = $mysqli->prepare("SELECT password FROM members WHERE id = ? LIMIT 1")){
 			$stmt->bind_param('i',$user_id);
 			$stmt->execute();
-			$stmt->store_results();
+			$stmt->store_result();
 			
 			if($stmt->num_rows == 1){ //If the user exists
 				$stmt->bind_result($password);

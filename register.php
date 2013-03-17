@@ -22,16 +22,16 @@
 
         <?php
             if(isset($_GET['error'])) { 
-               echo "Error Logging In: ".$_GET['error'];
-			   
+               echo 'Error Logging In!';
             }
         ?>
 
 
-        <form action="php/processing_login.php" method="post" name="login_form">
+        <form action="php/registration_server.php" method="post" name="login_form">
+        	<label for="username">Username: </label><input type="text" name="username" id="username"/ ><br/>
         	<label for="email">Email: </label><input type="email" name="email" id="email"/ ><br/>
             <label for="password">Password: </label><input type="password" name="password" id="password"/><br/>
-            <input type="button" value="Login" onClick="formhash(this.form, this.form.password);" />
+            <input type="button" value="Register" onClick="formhash(this.form, this.form.password);" />
         </form>
         
         <script type="text/javascript" src="js/sha512.js"></script>

@@ -9,7 +9,8 @@
 		
 		if(login($email,$password, $mysqli) == true){
 			//Login success
-			echo "Login success";
+			print_r($_SESSION);
+			header('Location: ../fileshareweb.php');
 		}else{
 			//Login fail
 			header('Location: ../index.php?error=1');
