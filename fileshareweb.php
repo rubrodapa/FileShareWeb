@@ -1,5 +1,9 @@
 <?php
 	include_once 'php/isLogin.php';
+	include_once 'php/functionsFileShare.php';
+	
+	$results = readADir('./files/');
+	
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +28,19 @@
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
 
-        <h2>Welcome inside!</h2>
+        <h2>Welcome inside fileshare web!</h2>
+        
+        <table border="1">
+        	<tr>
+            	<th>Name</th>
+                <th>Size</th>
+                <th>Action</th>
+            </tr>
+            <?php
+				writeAsTable($results)
+			?>
+        </table>
+        
         <form action="php/logout.php" method="post" name="logout_form">
         	<input type="button" value="Logout" onClick="this.form.submit();"/>
         </form>
@@ -34,7 +50,7 @@
 
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
-		<!--
+		<!-- 
         <script>
             var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
             (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
