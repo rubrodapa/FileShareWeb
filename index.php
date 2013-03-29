@@ -20,20 +20,26 @@
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
 
-        <?php
-            if(isset($_GET['error'])) { 
-               echo "Error Logging In: ".$_GET['error'];
-			   
-            }
-        ?>
-
-
-        <form action="php/processing_login.php" method="post" name="login_form">
-        	<label for="email">Email: </label><input type="email" name="email" id="email"/ ><br/>
-            <label for="password">Password: </label><input type="password" name="password" id="password"/><br/>
-            <input type="button" value="Login" onClick="formhash(this.form, this.form.password);" />
-        </form>
+		<div id="logo">
+			<img src="img/logo.png" alt="logo Fileshare Web"/>
+		</div>
         
+		<div id="stylized" class="myform">
+            <form action="php/processing_login.php" method="post" name="login_form">
+            	<h1>FileShare Web</h1>
+                <p>Login into the server</p>
+                <?php
+				if(isset($_GET['error'])) { 
+				   echo "<p class='error'>Error Logging In: ".$_GET['error']."</p>";
+				   
+				}?>
+                <label for="email">Email: </label><input type="email" name="email" id="email"/ ><br/>
+                <label for="password">Password: </label><input type="password" name="password" id="password"/><br/>
+                <!--<input type="button" value="Login" onClick="formhash(this.form, this.form.password);" />-->
+                <button onClick="formhash(this.form, this.form.password);">Login</button>
+            </form>
+		</div>
+                
         <script type="text/javascript" src="js/sha512.js"></script>
 		<script type="text/javascript" src="js/forms.js"></script>
 
