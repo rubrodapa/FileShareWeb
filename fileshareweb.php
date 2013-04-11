@@ -2,7 +2,7 @@
 	include_once 'php/isLogin.php';
 	include_once 'php/functionsFileShare.php';
 	
-	$ini = "./files/";
+	$ini = "C:/filesShareServer/";
 	if(!isset($_SESSION['route']['depth'])){
 		$_SESSION['route']['depth'] = 0;
 	}
